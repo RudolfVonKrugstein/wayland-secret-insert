@@ -25,7 +25,11 @@ def main():
     for collection in service.get_collections():
         collection.load_items_sync(None)
         for item in collection.get_items():
-            label = item.get_label()
+            attr = item.get_attributes()
+            if 'Path' in attr:
+                label = attr['Path']
+            else:
+                label = item.get_label()
             items[label] = item
 
     if not items:
