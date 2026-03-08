@@ -39,7 +39,7 @@ def main():
     # Pick with wofi
     typer.echo("show menu via wofi")
     indices = list(items.keys())
-    index, key = Wofi().select('Which secret?', indices)
+    index, key = Wofi().select('Which secret?', indices, wofi_args=["--matching", "fuzzy"])
     if key != 0:
         typer.echo("The user cancalled")
         raise typer.Exit(0)
